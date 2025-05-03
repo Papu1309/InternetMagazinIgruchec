@@ -1,0 +1,102 @@
+﻿<Page x:Class="Магазин.Pages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Магазин.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="AuthorizationPage" Background="Beige" >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Магазин ЧИТАЙ СТРАНА"
+        FontSize="42"
+        VerticalAlignment="Center"
+        Grid.Column="2"
+        Grid.ColumnSpan="2"
+        HorizontalAlignment="Center"
+        Foreground="Brown"
+        FontWeight="Bold"
+        />
+
+        <TextBlock Text="Авторизация"
+               FontSize="40"
+               VerticalAlignment="Center"
+               Grid.Row="1"
+               Grid.Column="2"
+               Grid.ColumnSpan="2"
+               TextAlignment="Center"
+               Foreground="Purple"
+               FontWeight="Bold" 
+               Margin="10"
+               />
+        <TextBlock Text="Логин"
+        FontSize="17"
+        Grid.Column="2"
+        Grid.Row="2"       
+        Grid.ColumnSpan="2"
+        TextAlignment="Center"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+               FontStyle="Italic" 
+                />
+        <TextBox x:Name="loginTb"
+             FontSize="22"
+             Grid.Column="2 "
+             Grid.Row="2"       
+             Grid.ColumnSpan="2"
+             Height="40"
+             VerticalAlignment="Center"
+             Padding="5"
+              />
+        <TextBlock Text="Пароль"
+            FontSize="17"
+            Grid.Column="2"
+            Grid.Row="3"       
+            Grid.ColumnSpan="2"
+            TextAlignment="Center"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontStyle="Italic" />
+        <TextBox x:Name="ParolTb"
+             FontSize="22"
+             Grid.Column="2"
+             Grid.Row="3"       
+             Grid.ColumnSpan="2"
+             Height="40"
+             VerticalAlignment="Center"
+             Padding="5"
+             />
+        <Button x:Name="btnVxod" Grid.Column="2"
+            Grid.Row="4"       
+            Grid.ColumnSpan="2"
+            FontSize="22"
+            Height="50" Content="Войти"
+            FontFamily="Calibri"
+            Background="Green" Click="btnVxod_Click"/>
+        <Button x:Name="btnReg" Grid.Column="2"
+            Grid.Row="5"       
+            Grid.ColumnSpan="2"
+            FontSize="22"
+            Height="50" Content="Регистрация"
+            FontFamily="Calibri"
+            Background="Red" Click="btnReg_Click" />
+       
+    </Grid>
+</Page>
