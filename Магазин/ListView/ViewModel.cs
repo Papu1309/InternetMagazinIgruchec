@@ -14,17 +14,18 @@ namespace Магазин.ListView
     {
         public List<Spicok> Spicoks { get; set; }
         public ICollectionView PeopleView { get; set; }
-        private string _searchText;
-        public string SearchText
+        public string _filterText;
+        public string FilterText
         {
-            get => _searchText;
+            get => _filterText;
             set
             {
-                _searchText = value;
-                OnPropertyChanged(nameof(SearchText));
-                PeopleView.Refresh(); // Обновляем представление при изменении текста поиска
+                _filterText = value;
+                OnPropertyChanged(nameof(FilterText));
+                PeopleView.Refresh(); // Обновляем представление при изменении фильтра
             }
         }
+
 
         public MainViewModel()
         {
@@ -46,23 +47,22 @@ namespace Магазин.ListView
                   new Spicok() { Name = "Семнадцатый", Price = 1655, Foto = "/Photo/Семнадцатый.jpg" },
            };
             PeopleView = CollectionViewSource.GetDefaultView(Spicoks);
-            PeopleView.Filter = obj =>
-            {
-                if (obj is Spicok spicok)
-                    return string.IsNullOrEmpty(SearchText) || spicok.Name.Contains(SearchText);
-                return false;
-            };
+            PeopleView.Filter = FilterPeople; // Устанавливаем фильтр
         }
-        public void SortByName()
+        public bool FilterPeople(object obj)
         {
-            PeopleView.SortDescriptions.Clear();
-            PeopleView.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
-            PeopleView.Refresh();
+            if (obj is Spicok spicok)
+            {
+                return string.IsNullOrEmpty(FilterText) || spicok.Name.Contains(FilterText);
+            }
+            return false;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        
+
     }
 }

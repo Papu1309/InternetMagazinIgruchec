@@ -9,7 +9,7 @@
       Title="Vid" >
     <Grid Margin="0,73,0,0" Background="Beige">
         <TextBlock Text="Список книг"  HorizontalAlignment="Center"  FontSize="30" Margin="0,-63,0,382" FontWeight="Bold" FontStyle="Italic"/>
-        <ListView FontSize="25" FontStyle="Italic" x:Name="SpicokListWiew" SelectionChanged="SpicokListWiew_SelectionChanged" Margin="10,0,268,0" ItemsSource="{Binding PeopleView}" >
+        <ListView FontSize="25" FontStyle="Italic" x:Name="SpicokListWiew"  Margin="10,0,268,0" ItemsSource="{Binding PeopleView}" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Выбрать товар" Width="300" >
@@ -29,7 +29,8 @@
         </ListView>
         <Button Content="Сортировать по имени" Click="SortByName_Click" Margin="550,238,10,75" Background="Gold" FontSize="20" FontWeight="Bold" Width="240" Height="60" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
         <Button Content="Корзина" x:Name="Korzina" Click="Korzina_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Background="Gold" Width="240" Height="60" FontSize="20" FontWeight="Bold"/>
-        <TextBox Margin="0,0,10,140" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Width="240" Height="60" />
-    </Grid>
+        <TextBox TextChanged="SearchTextBox_TextChanged" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Width="240" Height="59" x:Name="SearchTextBox" Margin="0,0,10,140" />
+        <TextBlock Text="Фильтрация" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,70,204"></TextBlock>
 
+    </Grid>
 </Page>

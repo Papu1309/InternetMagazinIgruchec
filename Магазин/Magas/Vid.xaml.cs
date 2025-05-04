@@ -27,26 +27,19 @@ namespace Магазин.Magas
     /// </summary>
     public partial class aa : Page
     {
+        //private MainViewModel viewModel;
         //public BindingList<Spicok> Spicokk;
         public List<Spicok> Spicoks { get; set; }
         public ICollectionView PeopleView { get; set; }
-        private string _searchText;
-        public string SearchText
-        {
-            get => _searchText;
-            set
-            {
-                _searchText = value;
-                OnPropertyChanged(nameof(SearchText));
-                PeopleView.Refresh(); // Обновляем представление при изменении текста поиска
-            }
-        }
+        
         public aa()
         {
             InitializeComponent();
             DataContext = new MainViewModel();
             LoadSpicoks();
             SpicokListWiew.ItemsSource = Spicoks;
+            //viewModel = new MainViewModel();
+            //this.DataContext = viewModel;
         }
         public void LoadSpicoks()
         {
@@ -69,12 +62,7 @@ namespace Магазин.Magas
                 
             };
             PeopleView = CollectionViewSource.GetDefaultView(Spicoks);
-            PeopleView.Filter = obj =>
-            {
-                if (obj is Spicok spicok)
-                    return string.IsNullOrEmpty(SearchText) || spicok.Name.Contains(SearchText);
-                return false;
-            };
+            
 
         }
         public void Korzina_Click(object sender, RoutedEventArgs e)
@@ -92,11 +80,6 @@ namespace Магазин.Magas
             corzina.Show();
         }
 
-        private void SpicokListWiew_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Opisanie_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Opisanie());
@@ -109,9 +92,18 @@ namespace Магазин.Magas
             PeopleView.Refresh();
         }
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+
+        private void SearchTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            string searchText = SearchTextBox.Text.ToLower();
+
+            // Фильтруем продукты на основе введенного текста
+            var filteredProducts = Spicoks
+                .Where(product => product.Name.ToLower().Contains(searchText))
+                .ToList();
+
+            // Обновляем источник данных для ListBox
+            SpicokListWiew.ItemsSource = filteredProducts;
         }
     }
 }

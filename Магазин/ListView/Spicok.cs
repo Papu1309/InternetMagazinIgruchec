@@ -12,7 +12,11 @@ namespace Магазин.Datagrid
         public int Price { get; set; }
         public bool IsSelected { get; set; }
         public string Foto {  get; set; }
-        
+        public override string ToString()
+        {
+            return $"{Name} - {Price:C}";
+        }
+
 
         //private bool choise;
         //public bool Choise
