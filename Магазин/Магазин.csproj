@@ -95,10 +95,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Magas\Opisanie.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Magas\Oplata.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,9 +142,6 @@
     <Compile Include="ListView\ViewModel.cs" />
     <Compile Include="Magas\Corzina.xaml.cs">
       <DependentUpon>Corzina.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Magas\Opisanie.xaml.cs">
-      <DependentUpon>Opisanie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Magas\Oplata.xaml.cs">
       <DependentUpon>Oplata.xaml</DependentUpon>
@@ -225,9 +218,7 @@
   <ItemGroup>
     <Resource Include="Logo\Shop.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logo\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Korzinafoto\picnic_7489374.png" />
   </ItemGroup>

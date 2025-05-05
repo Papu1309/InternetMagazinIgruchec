@@ -82,7 +82,7 @@
         Height="50" Content="Войти"
         FontFamily="Calibri"
         Background="Green" Click="btnVxodd_Click"/>
-        
+        <Button x:Name="txbBack" Content="Назад" Grid.Column="5" Grid.Row="5" Background="Red" FontSize="60" FontStyle="Italic" Click="txbBack_Click" ></Button>
 
     </Grid>
 </Page>

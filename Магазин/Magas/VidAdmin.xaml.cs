@@ -21,7 +21,7 @@ namespace Магазин.Magas
     /// <summary>
     /// Логика взаимодействия для VidAdmin.xaml
     /// </summary>
-    public partial class VidAdmin : Page,INotifyPropertyChanged
+    public partial class VidAdmin : Page
     {
         public List<Spicok> Spicoks { get; set; }
         public ICollectionView PeopleView { get; set; }

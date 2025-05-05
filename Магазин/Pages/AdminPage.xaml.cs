@@ -28,7 +28,16 @@ namespace Магазин.Pages
 
         private void btnVxodd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new VidAdmin());
+            if(loginTb.Text == "Admin" && ParolTb.Text == "1309")
+            {
+                NavigationService.Navigate(new VidAdmin());
+            }
+            
+        }
+
+        private void txbBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

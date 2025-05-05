@@ -80,10 +80,7 @@ namespace Магазин.Magas
             corzina.Show();
         }
 
-        private void Opisanie_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Opisanie());
-        }
+       
 
         private void SortByName_Click(object sender, RoutedEventArgs e)
         {
