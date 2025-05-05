@@ -1,0 +1,110 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using Магазин.Datagrid;
+using Магазин.ListView;
+
+namespace Магазин.Magas
+{
+    /// <summary>
+    /// Логика взаимодействия для VidAdmin.xaml
+    /// </summary>
+    public partial class VidAdmin : Page,INotifyPropertyChanged
+    {
+        public List<Spicok> Spicoks { get; set; }
+        public ICollectionView PeopleView { get; set; }
+
+        public VidAdmin()
+        {
+            InitializeComponent();
+            DataContext = new MainViewModel();
+            LoadSpicoks();
+            SpicokListWiew.ItemsSource = Spicoks;
+        }
+        public void LoadSpicoks()
+        {
+            Spicoks = new List<Spicok>
+            {
+                  new Spicok() {Name = "Родом из сердца",Price = 625,Foto = "/Photo/Родом из сердца.jpg" },
+                  new Spicok() {Name = "Странный дом", Price = 689 ,Foto = "/Photo/Странный дом.jpg" },
+                  new Spicok() {Name = "За спиной", Price = 759 ,Foto = "/Photo/За спиной.jpg" },
+                  new Spicok() {Name = "Атомные привычки", Price = 899 ,Foto = "/Photo/Атомные привычки.jpg" },
+                  new Spicok() {Name = "Татуировки менеджера", Price = 1115,Foto = "/Photo/Татуировки менеджера.jpg" },
+                  new Spicok() {Name = "Пять языков любви", Price = 487 ,Foto = "/Photo/Пять языков любви.jpg" },
+                  new Spicok() {Name = "Игры королей", Price = 781 ,Foto = "/Photo/Игры королей.jpg" },
+                  new Spicok() {Name = "Записи юного врача", Price = 541 ,Foto = "/Photo/Записи юного врача.jpg" },
+                  new Spicok() {Name = "Еженельник", Price = 428 ,Foto = "/Photo/Еженельник.jpg" },
+                  new Spicok() {Name = "Двадцать шестой", Price = 587 ,Foto = "/Photo/Двадцать шестой.jpg" },
+                  new Spicok() {Name = "Донецкое море", Price = 717 ,Foto = "/Photo/Донецкое море.jpg" },
+                  new Spicok() {Name = "Пластиковый океан", Price = 1195,Foto = "/Photo/Пластиковый океан.jpg" },
+                  new Spicok() {Name = "Клиника в Гоблинском переулке", Price = 505 ,Foto = "/Photo/Клиника в Гоблинском переулке.jpg" },
+                  new Spicok() {Name = "Семнадцатый", Price = 1655,Foto = "/Photo/Семнадцатый.jpg" },
+
+            };
+            PeopleView = CollectionViewSource.GetDefaultView(Spicoks);
+        }
+
+        private void SortByName_Click(object sender, RoutedEventArgs e)
+        {
+            PeopleView.SortDescriptions.Clear();
+            PeopleView.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+            PeopleView.Refresh();
+        }
+
+        private void Korzina_Click(object sender, RoutedEventArgs e)
+        {
+            List<Spicok> selectedSpicoks = new List<Spicok>();
+
+            foreach (var Spicok in Spicoks)
+            {
+                if (Spicok.IsSelected)
+                {
+                    selectedSpicoks.Add(Spicok);
+                }
+            }
+            Corzina corzina = new Corzina(selectedSpicoks);
+            corzina.Show();
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = SearchTextBox.Text.ToLower();
+
+            // Фильтруем продукты на основе введенного текста
+            var filteredProducts = Spicoks
+                .Where(product => product.Name.ToLower().Contains(searchText))
+                .ToList();
+
+            // Обновляем источник данных для ListBox
+            SpicokListWiew.ItemsSource = filteredProducts;
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Redact_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+    }
+}

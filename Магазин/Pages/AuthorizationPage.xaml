@@ -97,6 +97,6 @@
             Height="50" Content="Регистрация"
             FontFamily="Calibri"
             Background="Red" Click="btnReg_Click" />
-       
+        <Button x:Name="txbAdmin" Content="Админ?" Grid.Column="5" Grid.Row="5" FontSize="40" FontStyle="Italic" Click="txbAdmin_Click" Background="Beige" ></Button>
     </Grid>
 </Page>

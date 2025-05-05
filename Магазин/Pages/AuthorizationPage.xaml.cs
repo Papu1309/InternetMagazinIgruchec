@@ -49,5 +49,10 @@ namespace Магазин.Pages
         {
             NavigationService.Navigate(new RegistrationPage());
         }
+
+        private void txbAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AdminPage());
+        }
     }
 }
